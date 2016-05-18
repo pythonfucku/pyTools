@@ -1,6 +1,9 @@
 #!/bin/env python
+import sys
+import os
+import json
 
-def main(s):
+def print_json(s):
     output = ""
     N = "\n"
     T = "    "
@@ -31,6 +34,11 @@ def main(s):
             continue
         else:
             output += s[i]
-    return output
+    print output
 
-print main(s)
+def main():
+    target = sys.argv[1]
+    out = os.popen(target).read()
+    print_json(json.dumps(out))
+
+main()
